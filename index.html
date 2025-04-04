@@ -3,56 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mirudhula D - Portfolio</title>
+    <title>Mirudhula D - AI & Data Science Portfolio</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f4f4f4; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 5px; }
-        h1 { color: #333; }
-        h2 { color: #555; }
-        a { color: #007BFF; text-decoration: none; }
-        .section { margin-bottom: 20px; }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1a1a2e;
+            color: #e6e6e6;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        header {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(45deg, #0f3460, #e94560);
+            color: white;
+            animation: fadeIn 1s ease-in;
+        }
+        header h1 { font-size: 3em; margin: 0; }
+        header p { font-size: 1.2em; }
+        nav a {
+            color: #e94560;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #fff; }
+        .section { padding: 40px 0; }
+        h2 {
+            color: #e94560;
+            border-bottom: 2px solid #e94560;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .project-card {
+            background: #16213e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <header>
         <h1>Mirudhula D</h1>
-        <p>
-            📧 <a href="mailto:mirudhula05004@gmail.com">mirudhula05004@gmail.com</a> | 
-            📞 +91 8754697359 | 
-            🌐 <a href="https://github.com/mirudhula-dhanaraj">GitHub</a>
-        </p>
+        <p>AI & Data Science Enthusiast | Final-Year BTech Student</p>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
 
-        <div class="section">
-            <h2>Objective</h2>
-            <p>Final-year BTech student in AI & Data Science, skilled in JavaScript, Python, and AI solutions. Seeking to build impactful software in a dynamic team.</p>
+    <div class="container">
+        <div class="section" id="about">
+            <h2>About Me</h2>
+            <p>I'm a final-year BTech student in Artificial Intelligence and Data Science at Saveetha Engineering College. With a passion for AI, IoT, and software development, I build solutions that solve real-world problems. Let’s create something impactful together!</p>
         </div>
 
-        <div class="section">
-            <h2>Education</h2>
-            <p><strong>B.Tech in AI & Data Science</strong><br>Saveetha Engineering College, Chennai<br>2021 – 2025 (Expected)</p>
-        </div>
-
-        <div class="section">
+        <div class="section" id="skills">
             <h2>Skills</h2>
             <p><strong>Languages:</strong> JavaScript, Python, C<br><strong>AI/ML:</strong> Machine Learning (Scikit-learn), NLP, IoT<br><strong>Tools:</strong> Git, VS Code, Postman</p>
         </div>
 
-        <div class="section">
-            <h2>Professional Experience</h2>
-            <p><strong>Software Development Intern</strong><br>Lattiv Tech Labs, Chennai<br>Jan 2023 – Feb 2023<br>- Built cloud features, boosting uptime by 10%.<br>- Enhanced security, cutting risks by 15%.</p>
-        </div>
-
-        <div class="section">
+        <div class="section" id="projects">
             <h2>Projects</h2>
-            <p><strong>Indoor Air Quality Modelling Based on IoT</strong><br>- IoT system with 92% accuracy in pollutant detection.<br>- Tech: Python, IoT, Analytics<br>- <a href="https://github.com/mirudhula-dhanaraj/indoor-air-quality">GitHub</a></p>
-            <p><strong>AI-Digital Twin</strong><br>- Predictive system with 25% faster response time.<br>- Tech: Python, ML, NLP, IoT<br>- <a href="https://github.com/mirudhula-dhanaraj/ai-digital-twin">GitHub</a></p>
-            <p><strong>Social Media Analytics Tool</strong><br>- 88% accurate sentiment analysis over 1,000+ posts.<br>- Tech: JavaScript, Python, Scikit-learn, APIs<br>- <a href="https://github.com/mirudhula-dhanaraj/social-media-analytics">GitHub</a></p>
+            <div class="project-card">
+                <h3>Indoor Air Quality Modelling</h3>
+                <p>IoT-based system monitoring air quality with 92% accuracy across 10 sensors.<br><strong>Tech:</strong> Python, IoT, Analytics<br><a href="https://github.com/mirudhula-dhanaraj/indoor-air-quality">GitHub</a></p>
+            </div>
+            <div class="project-card">
+                <h3>AI-Digital Twin</h3>
+                <p>AI-powered digital twin with 25% faster response time.<br><strong>Tech:</strong> Python, ML, NLP, IoT<br><a href="https://github.com/mirudhula-dhanaraj/ai-digital-twin">GitHub</a></p>
+            </div>
+            <div class="project-card">
+                <h3>Social Media Analytics Tool</h3>
+                <p>Sentiment analysis with 88% accuracy over 1,000+ posts.<br><strong>Tech:</strong> JavaScript, Python, Scikit-learn, APIs<br><a href="https://github.com/mirudhula-dhanaraj/social-media-analytics">GitHub</a></p>
+            </div>
         </div>
 
-        <div class="section">
-            <h2>Certifications</h2>
-            <p>- Introduction to Programming with MATLAB (2023)<br>- Mobile App Development Using ML (2023)<br>- Introduction to Data Mining (2022)<br>- AI Projects with Python (2023)<br>- Architecting Smart IoT Devices (2022)</p>
+        <div class="section" id="contact">
+            <h2>Contact</h2>
+            <p>📧 <a href="mailto:mirudhula05004@gmail.com">mirudhula05004@gmail.com</a><br>📞 +91 8754697359<br>🌐 <a href="https://github.com/mirudhula-dhanaraj">GitHub</a></p>
         </div>
     </div>
+
+    <script>
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
