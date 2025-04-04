@@ -3,115 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mirudhula D - AI & Data Science Portfolio</title>
+    <title>Mirudhula D - AI Wizard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background: #1a1a2e;
-            color: #e6e6e6;
+            font-family: 'Orbitron', sans-serif;
+            color: #fff;
+            background: #0d0d1a;
             overflow-x: hidden;
         }
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
         .container {
-            max-width: 1000px;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px;
+            padding: 20px;
         }
         header {
             text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(45deg, #0f3460, #e94560);
-            color: white;
-            animation: fadeIn 1s ease-in;
+            padding: 100px 0;
         }
-        header h1 { font-size: 3em; margin: 0; }
-        header p { font-size: 1.2em; }
+        #typed-name { font-size: 4em; color: #00ffcc; }
         nav a {
-            color: #e94560;
-            margin: 0 15px;
+            color: #ff007a;
+            margin: 0 20px;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-size: 1.2em;
+            transition: transform 0.3s;
         }
-        nav a:hover { color: #fff; }
-        .section { padding: 40px 0; }
-        h2 {
-            color: #e94560;
-            border-bottom: 2px solid #e94560;
-            display: inline-block;
-            padding-bottom: 5px;
+        nav a:hover { transform: scale(1.2); color: #fff; }
+        .section { padding: 60px 0; opacity: 0; transition: opacity 0.5s; }
+        .section.visible { opacity: 1; }
+        h2 { font-size: 2.5em; color: #ff007a; text-shadow: 0 0 10px #ff007a; }
+        .cube-container {
+            perspective: 1000px;
+            height: 200px;
+            display: flex;
+            justify-content: center;
         }
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: spin 10s infinite linear;
+        }
+        .cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: rgba(0, 255, 204, 0.2);
+            border: 2px solid #00ffcc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #fff;
+            text-shadow: 0 0 5px #00ffcc;
+        }
+        .front  { transform: translateZ(100px); }
+        .back   { transform: translateZ(-100px) rotateY(180deg); }
+        .right  { transform: translateX(100px) rotateY(90deg); }
+        .left   { transform: translateX(-100px) rotateY(-90deg); }
+        .top    { transform: translateY(-100px) rotateX(90deg); }
+        .bottom { transform: translateY(100px) rotateX(-90deg); }
+        @keyframes spin { from { transform: rotateX(0) rotateY(0); } to { transform: rotateX(360deg) rotateY(360deg); } }
         .project-card {
-            background: #16213e;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             margin: 20px 0;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .project-card:hover { transform: scale(1.05); }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+        .modal-content {
+            background: #1a1a2e;
+            padding: 30px;
             border-radius: 10px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 600px;
+            text-align: center;
         }
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        .contact-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ff007a;
+            border: none;
+            border-radius: 25px;
+            color: #fff;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .contact-btn:hover { background: #00ffcc; transform: scale(1.1); }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Mirudhula D</h1>
-        <p>AI & Data Science Enthusiast | Final-Year BTech Student</p>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
+    <div id="particles-js"></div>
     <div class="container">
+        <header>
+            <h1><span id="typed-name"></span></h1>
+            <p>AI & Data Science Innovator</p>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
         <div class="section" id="about">
             <h2>About Me</h2>
-            <p>I'm a final-year BTech student in Artificial Intelligence and Data Science at Saveetha Engineering College. With a passion for AI, IoT, and software development, I build solutions that solve real-world problems. Let’s create something impactful together!</p>
+            <p>I’m a final-year BTech student in AI & Data Science, crafting cutting-edge solutions with code and creativity. Let’s build the future!</p>
         </div>
 
         <div class="section" id="skills">
             <h2>Skills</h2>
-            <p><strong>Languages:</strong> JavaScript, Python, C<br><strong>AI/ML:</strong> Machine Learning (Scikit-learn), NLP, IoT<br><strong>Tools:</strong> Git, VS Code, Postman</p>
+            <div class="cube-container">
+                <div class="cube">
+                    <div class="cube-face front">JavaScript</div>
+                    <div class="cube-face back">Python</div>
+                    <div class="cube-face right">Machine Learning</div>
+                    <div class="cube-face left">NLP</div>
+                    <div class="cube-face top">IoT</div>
+                    <div class="cube-face bottom">Git</div>
+                </div>
+            </div>
         </div>
 
         <div class="section" id="projects">
             <h2>Projects</h2>
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('air')">
                 <h3>Indoor Air Quality Modelling</h3>
-                <p>IoT-based system monitoring air quality with 92% accuracy across 10 sensors.<br><strong>Tech:</strong> Python, IoT, Analytics<br><a href="https://github.com/mirudhula-dhanaraj/indoor-air-quality">GitHub</a></p>
+                <p>IoT-powered air quality tracker.</p>
             </div>
-            <div class="project-card">
+            <div class="project-card" onclick="openModal('twin')">
                 <h3>AI-Digital Twin</h3>
-                <p>AI-powered digital twin with 25% faster response time.<br><strong>Tech:</strong> Python, ML, NLP, IoT<br><a href="https://github.com/mirudhula-dhanaraj/ai-digital-twin">GitHub</a></p>
+                <p>Smart predictive digital twin.</p>
             </div>
-            <div class="project-card">
-                <h3>Social Media Analytics Tool</h3>
-                <p>Sentiment analysis with 88% accuracy over 1,000+ posts.<br><strong>Tech:</strong> JavaScript, Python, Scikit-learn, APIs<br><a href="https://github.com/mirudhula-dhanaraj/social-media-analytics">GitHub</a></p>
+            <div class="project-card" onclick="openModal('social')">
+                <h3>Social Media Analytics</h3>
+                <p>Sentiment analysis powerhouse.</p>
             </div>
         </div>
 
         <div class="section" id="contact">
             <h2>Contact</h2>
-            <p>📧 <a href="mailto:mirudhula05004@gmail.com">mirudhula05004@gmail.com</a><br>📞 +91 8754697359<br>🌐 <a href="https://github.com/mirudhula-dhanaraj">GitHub</a></p>
+            <p>📧 mirudhula05004@gmail.com | 📞 +91 8754697359 | 🌐 <a href="https://github.com/mirudhula-dhanaraj">GitHub</a></p>
+            <button class="contact-btn" onclick="alert('Email me at mirudhula05004@gmail.com!')">Get in Touch</button>
         </div>
     </div>
 
+    <!-- Modals -->
+    <div id="air-modal" class="modal">
+        <div class="modal-content">
+            <h3>Indoor Air Quality Modelling</h3>
+            <p>Built an IoT system with 92% accuracy in pollutant detection across 10 sensors.<br><strong>Tech:</strong> Python, IoT, Analytics<br><a href="https://github.com/mirudhula-dhanaraj/indoor-air-quality">GitHub</a></p>
+            <button onclick="closeModal('air')">Close</button>
+        </div>
+    </div>
+    <div id="twin-modal" class="modal">
+        <div class="modal-content">
+            <h3>AI-Digital Twin</h3>
+            <p>25% faster response time with ML and IoT.<br><strong>Tech:</strong> Python, ML, NLP, IoT<br><a href="https://github.com/mirudhula-dhanaraj/ai-digital-twin">GitHub</a></p>
+            <button onclick="closeModal('twin')">Close</button>
+        </div>
+    </div>
+    <div id="social-modal" class="modal">
+        <div class="modal-content">
+            <h3>Social Media Analytics Tool</h3>
+            <p>88% accurate sentiment analysis over 1,000+ posts.<br><strong>Tech:</strong> JavaScript, Python, Scikit-learn, APIs<br><a href="https://github.com/mirudhula-dhanaraj/social-media-analytics">GitHub</a></p>
+            <button onclick="closeModal('social')">Close</button>
+        </div>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
     <script>
-        // Smooth scrolling for nav links
+        // Particles Background
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 100 },
+                color: { value: '#00ffcc' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: { speed: 2 }
+            },
+            interactivity: {
+                events: { onhover: { enable: true, mode: 'repulse' } }
+            }
+        });
+
+        // Typing Effect
+        new Typed('#typed-name', {
+            strings: ['Mirudhula D'],
+            typeSpeed: 100,
+            loop: false
+        });
+
+        // Smooth Scroll
         document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', e => {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                document.querySelector(anchor.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        // Scroll Animations
+        const sections = document.querySelectorAll('.section');
+        window.addEventListener('scroll', () => {
+            sections.forEach(section => {
+                const top = section.getBoundingClientRect().top;
+                if (top < window.innerHeight - 100) section.classList.add('visible');
+            });
+        });
+
+        // Modal Functions
+        function openModal(id) { document.getElementById(`${id}-modal`).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(`${id}-modal`).style.display = 'none'; }
     </script>
 </body>
 </html>
