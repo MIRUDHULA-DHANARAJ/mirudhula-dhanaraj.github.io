@@ -30,15 +30,14 @@
         header {
             text-align: center;
             padding: 100px 0;
-            position: relative;
         }
         #typed-name {
             font-size: 4em;
             animation: colorCycle 2s infinite;
         }
         @keyframes colorCycle {
-            0% { color: #a8e6cf; }
-            50% { color: #d7b9d5; }
+            0% { color: #a8e6cf; } /* Pastel mint */
+            50% { color: #d7b9d5; } /* Pastel lavender */
             100% { color: #a8e6cf; }
         }
         nav a {
@@ -142,22 +141,19 @@
             transition: opacity 0.3s;
         }
         .skills-orbit:hover .constellation line {
-            opacity: 1; /* Glow on hover */
+            opacity: 1;
         }
 
-        /* Hologram Project Cards */
         .project-card {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             margin: 20px 0;
             border-radius: 15px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            perspective: 1000px;
+            transition: transform 0.5s;
         }
         .project-card:hover {
-            transform: rotateY(360deg) translateZ(20px);
-            box-shadow: 0 0 20px rgba(215, 185, 213, 0.7), 0 0 20px rgba(168, 230, 207, 0.7);
+            transform: rotateY(360deg);
         }
         .modal {
             display: none;
@@ -170,7 +166,6 @@
             justify-content: center;
             align-items: center;
             z-index: 100;
-            perspective: 1000px;
         }
         .modal-content {
             background: #1a1a2e;
@@ -178,11 +173,6 @@
             border-radius: 10px;
             max-width: 600px;
             text-align: center;
-            transform-style: preserve-3d;
-            transition: transform 0.5s;
-        }
-        .modal.active .modal-content {
-            transform: rotateY(360deg);
         }
         .modal-content img {
             width: 300px;
@@ -259,12 +249,12 @@
                 <div class="skill">Postman</div>
                 <div class="constellation">
                     <svg>
-                        <line x1="150" y1="150" x2="290" y2="150" /> <!-- JavaScript -->
-                        <line x1="290" y1="150" x2="225" y2="50" />  <!-- to Python -->
-                        <line x1="225" y1="50"  x2="190" y2="70" />  <!-- to Scikit-learn -->
-                        <line x1="190" y1="70"  x2="150" y2="90" />  <!-- to NLP -->
-                        <line x1="150" y1="90"  x2="130" y2="110" /> <!-- to IoT -->
-                        <line x1="130" y1="110" x2="170" y2="130" /> <!-- to Postman -->
+                        <line x1="150" y1="150" x2="290" y2="150" />
+                        <line x1="290" y1="150" x2="225" y2="50" />
+                        <line x1="225" y1="50"  x2="190" y2="70" />
+                        <line x1="190" y1="70"  x2="150" y2="90" />
+                        <line x1="150" y1="90"  x2="130" y2="110" />
+                        <line x1="130" y1="110" x2="170" y2="130" />
                     </svg>
                 </div>
             </div>
@@ -273,15 +263,15 @@
         <div class="section" id="projects">
             <h2>Projects</h2>
             <div class="project-card" onclick="openModal('air')">
-                <h3><span id="typed-air"></span></h3>
+                <h3>Indoor Air Quality Modelling</h3>
                 <p>IoT-powered air quality tracker.</p>
             </div>
             <div class="project-card" onclick="openModal('twin')">
-                <h3><span id="typed-twin"></span></h3>
+                <h3>AI-Digital Twin</h3>
                 <p>Smart predictive digital twin.</p>
             </div>
             <div class="project-card" onclick="openModal('social')">
-                <h3><span id="typed-social"></span></h3>
+                <h3>Social Media Analytics</h3>
                 <p>Sentiment analysis powerhouse.</p>
             </div>
         </div>
@@ -340,28 +330,11 @@
             }
         });
 
-        // Typing Effect for Name
+        // Typing Effect
         new Typed('#typed-name', {
             strings: ['Mirudhula D'],
             typeSpeed: 100,
             loop: false
-        });
-
-        // Typing Effect for Project Titles
-        new Typed('#typed-air', {
-            strings: ['Indoor Air Quality Modelling'],
-            typeSpeed: 50,
-            loop: true
-        });
-        new Typed('#typed-twin', {
-            strings: ['AI-Digital Twin'],
-            typeSpeed: 50,
-            loop: true
-        });
-        new Typed('#typed-social', {
-            strings: ['Social Media Analytics'],
-            typeSpeed: 50,
-            loop: true
         });
 
         // Smooth Scroll
@@ -381,43 +354,19 @@
             });
         });
 
-        // Modal Functions with 3D Flip
-        function openModal(id) {
-            const modal = document.getElementById(`${id}-modal`);
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('active'), 10);
-        }
-        function closeModal(id) {
-            const modal = document.getElementById(`${id}-modal`);
-            modal.classList.remove('active');
-            setTimeout(() => modal.style.display = 'none', 500);
-        }
+        // Modal Functions
+        function openModal(id) { document.getElementById(`${id}-modal`).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(`${id}-modal`).style.display = 'none'; }
 
         // Confetti Explosion
         function triggerConfetti() {
             confetti({
-                particleCount: 200,
+                particleCount: 100,
                 spread: 70,
                 origin: { y: 0.6 },
                 colors: ['#a8e6cf', '#d7b9d5', '#ffccb6']
             });
         }
-
-        // Scroll Sparkles
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-            if (Math.abs(currentScroll - lastScroll) > 50) {
-                confetti({
-                    particleCount: 5,
-                    spread: 30,
-                    origin: { y: currentScroll / document.body.scrollHeight },
-                    colors: ['#a8e6cf', '#d7b9d5', '#ffccb6'],
-                    scalar: 0.5
-                });
-                lastScroll = currentScroll;
-            }
-        });
     </script>
 </body>
 </html>
