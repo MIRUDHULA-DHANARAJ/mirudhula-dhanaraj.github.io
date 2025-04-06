@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mirudhula D - AI Wizard</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-    <!-- Rest of your pastel orbiting skills code -->
     <style>
         body {
             margin: 0;
@@ -37,9 +36,9 @@
             animation: colorCycle 2s infinite;
         }
         @keyframes colorCycle {
-            0% { color: #32cd32; } /* Green */
-            50% { color: #6a0dad; } /* Purple */
-            100% { color: #32cd32; } /* Back to green */
+            0% { color: #a8e6cf; }
+            50% { color: #d7b9d5; }
+            100% { color: #a8e6cf; }
         }
         nav a {
             color: #d7b9d5;
@@ -51,16 +50,9 @@
         nav a:hover { transform: scale(1.2); color: #fff; }
         .section { padding: 60px 0; opacity: 0; transition: opacity 0.5s; }
         .section.visible { opacity: 1; }
-        h2 { font-size: 2.5em; color: #6a0dad; text-shadow: 0 0 10px #6a0dad; }
-        .cube-container {
-            perspective: 1000px;
-            height: 250px;
-            display: flex;
-            justify-content: center;
-        }
-        .cube {
-            width: 250px;
-            height: 250px;
+        h2 { font-size: 2.5em; color: #d7b9d5; text-shadow: 0 0 10px #d7b9d5; }
+        
+        .skills-orbit {
             position: relative;
             width: 300px;
             height: 300px;
@@ -357,26 +349,12 @@
             });
         });
 
-        function openModal(id) { document.getElementById(`${id}-modal`).style.display = 'flex'; }
-        function closeModal(id) { document.getElementById(`${id}-modal`).style.display = 'none'; }
-
-        // Music Toggle
-        const audio = document.getElementById('bg-music');
-        const musicBtn = document.querySelector('.music-toggle');
-        let isPlaying = false;
-        audio.volume = 0.3;
-        function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-                musicBtn.textContent = 'Music: Off';
-            } else {
-                audio.play();
-                musicBtn.textContent = 'Music: On';
-            }
-            isPlaying = !isPlaying;
+        function openModal(id) {
+            document.getElementById(`${id}-modal`).style.display = 'flex';
         }
-
-        // Confetti Explosion
+        function closeModal(id) {
+            document.getElementById(`${id}-modal`).style.display = 'none';
+        }
         function triggerConfetti() {
             confetti({
                 particleCount: 100,
